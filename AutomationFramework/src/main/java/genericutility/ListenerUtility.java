@@ -13,34 +13,16 @@ import org.testng.ITestResult;
 public class ListenerUtility extends BaseClass implements ITestListener
 {
 
-//	@Override
-//	public void onTestFailure(ITestResult result) 
-//	{
-//		String methodName = result.getName();
-//		TakesScreenshot ts = (TakesScreenshot) driver;
-//		File temp = ts.getScreenshotAs(OutputType.FILE);
-//		File perm = new File("./screenshots/"+methodName+".png");
-//		try 
-//		{
-//			FileHandler.copy(temp, perm);
-//		} 
-//		catch (IOException e) 
-//		{
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
-
 	@Override
-	public void onTestSuccess(ITestResult result) 
+	public void onTestFailure(ITestResult result) 
 	{
 		String methodName = result.getName();
 		TakesScreenshot ts = (TakesScreenshot) driver;
 		File temp = ts.getScreenshotAs(OutputType.FILE);
-		File dest = new File("./screenshots/"+methodName+".png");
+		File perm = new File("./screenshots/"+methodName+".png");
 		try 
 		{
-			FileHandler.copy(temp, dest);
+			FileHandler.copy(temp, perm);
 		} 
 		catch (IOException e) 
 		{
@@ -48,6 +30,24 @@ public class ListenerUtility extends BaseClass implements ITestListener
 			e.printStackTrace();
 		}
 	}
+
+//	@Override
+//	public void onTestSuccess(ITestResult result) 
+//	{
+//		String methodName = result.getName();
+//		TakesScreenshot ts = (TakesScreenshot) driver;
+//		File temp = ts.getScreenshotAs(OutputType.FILE);
+//		File dest = new File("./screenshots/"+methodName+".png");
+//		try 
+//		{
+//			FileHandler.copy(temp, dest);
+//		} 
+//		catch (IOException e) 
+//		{
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 	
 	
 	
